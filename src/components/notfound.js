@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/notfound.css";
 
 function NotFound() {
     document.title = "404 | Not Found"
