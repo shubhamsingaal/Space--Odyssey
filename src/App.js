@@ -4,6 +4,7 @@ import Auth from "./components/auth"
 import Events from "./components/events"
 import Contact from "./components/contact"
 import NotFound from "./components/notfound"
+import Timeline from "./components/timeline"
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/auth" element={<Auth />} />
         <Route exact path="/events" element={<Events />} />
         <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/timeline" element={<Timeline />} />
         <Route exact path="/404" element={<NotFound />} />
         <Route exact path="*" element={<Navigate to="/404" />} />
         <Route exact path="/" element={<Home />}></Route>
