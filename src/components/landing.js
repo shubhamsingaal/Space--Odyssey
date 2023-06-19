@@ -49,7 +49,7 @@ function Landing() {
       <section className="hero-section">
         <h1>Welcome to Coding Website</h1>
         <p>Learn, Code, Succeed!</p>
-        <a href="#" className="cta-button">Get Started</a>
+        <a href="./auth" className="cta-button">Get Started</a>
       </section>
 
       <section className="features-section">
