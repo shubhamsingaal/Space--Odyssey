@@ -9,6 +9,7 @@ const QuestionPage = () => {
   const [answer, setAnswer] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,16 +20,27 @@ const QuestionPage = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = () => {
-    auth.signOut();
-    navigate('/'); // Redirect to the home page after logout
-  };
+  useEffect(() => {
+    if (timeLeft === 0) {
+      navigate('/next-page'); // Navigate to the next page after the timer ends
+    }
+
+    let timer = null;
+
+    if (timeLeft > 0) {
+      timer = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [timeLeft, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!user) {
-      // User not logged in, handle the error or redirect to the login page
+      // User not logged in, handle the error or redirect to login page
       return;
     }
 
@@ -37,7 +49,7 @@ const QuestionPage = () => {
     const currentTime = new Date().getTime();
 
     // Here, you should implement the logic to check if the answer is correct
-    const isAnswerCorrect = answer === 'Correct Answer';
+    const isAnswerCorrect = answer === 'something';
 
     firestore
       .collection('answers')
@@ -54,8 +66,10 @@ const QuestionPage = () => {
 
         if (isAnswerCorrect) {
           setIsCorrect(true);
+          setTimeLeft(10); // Set the timer for 10 seconds for the next question
         } else {
           setIsCorrect(false);
+          alert('Wrong answer!'); // Show an alert for wrong answer
         }
       })
       .catch((error) => {
@@ -63,6 +77,27 @@ const QuestionPage = () => {
         setIsSubmitting(false);
       });
   };
+
+  const handleLogout = () => {
+    auth.signOut();
+    navigate('/'); // Redirect to the home page after logout
+  };
+
+  if (!user) {
+    return <div>Please log in to access this page.</div>;
+  }
+
+  if (timeLeft !== null && timeLeft > 0) {
+    return (
+      <div className="question-page">
+        <h2>Time Left</h2>
+        <div className="time-left">{}</div>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="question-page">
@@ -90,9 +125,9 @@ const QuestionPage = () => {
           </button>
         </div>
         {isSubmitting && <div className="submitting">Submitting...</div>}
-        {isCorrect !== null && (
-          <div className={`answer-popup ${isCorrect ? 'correct' : 'wrong'}`}>
-            {isCorrect ? 'Correct answer!' : 'Wrong answer!'}
+        {isCorrect && (
+          <div className="correct-answer-popup">
+            Correct answer!
           </div>
         )}
       </form>
