@@ -25,7 +25,7 @@ const QuestionPage = () => {
       navigate('/next-page'); // Navigate to the next page after the timer ends
     }
 
-    let timer = null;
+    let timer = 1000;
 
     if (timeLeft > 0) {
       timer = setTimeout(() => {
@@ -49,10 +49,10 @@ const QuestionPage = () => {
     const currentTime = new Date().getTime();
 
     // Here, you should implement the logic to check if the answer is correct
-    const isAnswerCorrect = answer === 'something';
+    const isAnswerCorrect = answer === 'Correct Answer';
 
     firestore
-      .collection('answers')
+      .collection('answer')
       .add({
         answer,
         userId: user.uid,
