@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Landing() {
-  document.title = "Coding - Panorama | ISTE Students' Chapter NIT Durgapur"
+  document.title = "Code Sprint - Panorama | ISTE Students' Chapter NIT Durgapur"
 
   // firebase configurations, do not change
   const [authState, setAuthState] = useState({
