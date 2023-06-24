@@ -1,8 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+font-family: 'Belanosima', sans-serif;
+background-color: #000000;
 }
 
 /* LandingPage styles */
@@ -10,6 +11,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+   
 }
 
 .header {
@@ -99,52 +101,109 @@ nav ul li a:hover {
 
 .skill {
     margin-top: 520px;
-    padding: 0 0 0px 0;
+    padding: -300px 0 50px 0;
     position: relative;
 }
 
 .skill-bx {
     background: #000000;
-   
+   margin-top: -450px;
     text-align: center;
   
    
 }
 .skill span{
     color: white;
+    margin:10px;
+    
 }
 
 .skill h2 {
-    font-size: 45px;
+    font-size: 32px;
     font-weight: 700;
+    color: white;
 }
 
 .skill p {
     color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0.9px;
+    line-height: 2em;
+    margin: 10px 0 13px 0;
+    
+}
+
+.heading{
+    font-size: 45px;
+    color: white;
+    margin-left: 100px;
+}
+
+
+
+
+.banner h1 {
+    font-size: 37px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.banner p {
+    color: #f8f7f8;
     font-size: 18px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    margin: 14px 0 75px 0;
-}
-.skills span{
-    color: white;
+    width: 96%;
 }
 
-.skill-slider {
-    width: 80%;
-    margin: 0 auto;
-    position: relative;
+.banner button {
+   
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 60px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
 }
 
-.skill-slider .item img {
-    width: 50%;
-    margin: 0 auto 15px auto;
+.banner button a{
+    text-decoration: none;
 }
 
-.background-image-left {
-    top: 28%;
-    position: absolute;
-    bottom: 0;
-    width: 40%;
-    z-index: -4;
+.banner button svg {
+   
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
 }
+
+.banner button:hover svg {
+    margin-left: 25px;
+}
+
+
+
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.txt-rotate>.wrap {
+    border-right: 0.08em solid #666;
+}
+

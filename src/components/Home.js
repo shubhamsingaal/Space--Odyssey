@@ -1,6 +1,9 @@
 import { Box } from "@mui/material";
 import React from "react";
 import "../styles/landing.css"
+import TrackVisibility from 'react-on-screen';
+import { ArrowRightCircle } from 'react-bootstrap-icons';
+import {  Row, Col } from "react-bootstrap";
 import {
   Button,
   Container,
@@ -15,7 +18,7 @@ import { section1Content } from "../utils/content";
 import useMeasure from "react-use-measure";
 import Title from "../components/Title";
 import logo from "../assets/logo.png";
-
+import { useState, useEffect } from "react";
 const {
   MainBG,
   TreesImage,
@@ -43,7 +46,50 @@ const CustomButton = ({ children, ...props }) => (
 );
 
 const Home = () => {
+  document.title = "Space Odyssey | Panorama"
   const theme = useTheme();
+  const [loopNum, setLoopNum] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
+  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  // eslint-disable-next-line
+  const [index, setIndex] = useState(1);
+  const toRotate = ["The Limits", "The surrounding", "The world"];
+  const period = 2000;
+
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      tick();
+    }, delta);
+
+    return () => { clearInterval(ticker) };
+    // eslint-disable-next-line
+  }, [text])
+
+  const tick = () => {
+    let i = loopNum % toRotate.length;
+    let fullText = toRotate[i];
+    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+
+    setText(updatedText);
+
+    if (isDeleting) {
+      setDelta(prevDelta => prevDelta / 2);
+    }
+
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setIndex(prevIndex => prevIndex - 1);
+      setDelta(period);
+    } else if (isDeleting && updatedText === '') {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setIndex(1);
+      setDelta(500);
+    } else {
+      setIndex(prevIndex => prevIndex + 1);
+    }
+  }
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const [ref, { height }] = useMeasure();
@@ -56,7 +102,36 @@ const Home = () => {
       </Box>
       <img src={logo} style={{ height: "196px", objectFit: "contain" }} />
 
-  
+      <div>
+        <h1 className="heading" data-heading="Good times" contenteditable>
+          Space Odyssey
+        </h1>
+      </div>
+      <section className="banner" id="home">
+        <Container>
+          <Row className="aligh-items-center">
+            <Col xs={12} md={6} xl={7}>
+              <TrackVisibility>
+                {({ isVisible }) =>
+                  <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                 
+                    <h1>{`Time to Code `} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "The Limits", "The sourroundings", "The World" ]'><span className="wrap">{text}</span></span></h1>
+                    <p>
+                      Coding competitions are a great way for young coders to apply  what they <br /> know in a  fun context and improve their analytical and problem-solving skills.
+                    </p>
+                    <button onClick={() => console.log('connect')}><a href="./auth">Start Game </a> <ArrowRightCircle size={25} /></button>
+                  </div>}
+              </TrackVisibility>
+            </Col>
+            <Col xs={12} md={6} xl={5}>
+              <TrackVisibility>
+               
+              </TrackVisibility>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
       <Box
         ref={ref}
         sx={{
@@ -70,10 +145,6 @@ const Home = () => {
         }}
       >
         <img src={MainBG} style={{ width: "100%", opacity: 0 }} />
-
-        {/* Star */}
-
-        {/* Trees */}
         {!isSmallScreen && (
           <Hidden mdDown>
             <img
@@ -93,6 +164,7 @@ const Home = () => {
         <img
           src={CliffImage}
           style={{
+           
             height: "100%",
             position: "absolute",
             right: 0,
@@ -105,6 +177,7 @@ const Home = () => {
         <img
           src={HorseImage}
           style={{
+            
             position: "absolute",
             height: isSmallScreen ? "30%" : "38%",
             right: "14%",
@@ -138,11 +211,9 @@ const Home = () => {
                   <span>
                     5. Only one participation per person is allowed. Using multiple accounts to play the game is a violation of these terms.
                   </span> <hr />
+                 
                   <span>
-                    6. All decisions made by judges will be final and binding.
-                  </span> <hr />
-                  <span>
-                    7. Tip: Keep your curiosity up always and do not use ChatGPT :)
+                    6. Tip: Keep your curiosity up always and do not use ChatGPT :)
                   </span> <hr />
 
                 </div>
