@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom"
-import Landing from "./components/landing"
 import Login from "./components/auth"
 import Game from "./components/game"
 import NotFound from "./components/notfound"
 import AlreadyCompleted from "./components/alreadycompleted"
+import Home from "./components/Home"
 
 
 
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/404" element={<NotFound />} />
         <Route exact path="/completed" element={<AlreadyCompleted />} />
         <Route exact path="*" element={<Navigate to="/404" />} />
-        <Route exact path="/" element={<Landing />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
       </Routes>
     </BrowserRouter>
   );

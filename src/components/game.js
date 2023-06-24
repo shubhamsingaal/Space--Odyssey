@@ -3,11 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { auth, firestore } from '../components/firebase';
 import '../styles/game.css';
 
-
 const QuestionPage = () => {
   const [user, setUser] = useState(null);
   const [answer, setAnswer] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
   const navigate = useNavigate();
@@ -36,45 +34,31 @@ const QuestionPage = () => {
     return () => clearTimeout(timer);
   }, [timeLeft, navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!user) {
-      // User not logged in, handle the error or redirect to login page
-      return;
-    }
-
-    setIsSubmitting(true);
-
+  const postAnswer = () => {
     const currentTime = new Date().getTime();
 
     // Here, you should implement the logic to check if the answer is correct
     const isAnswerCorrect = answer === 'something';
 
-    firestore
-      .collection('answers')
-      .add({
-        answer,
-        userId: user.uid,
-        timestamp: currentTime,
-        isCorrect: isAnswerCorrect,
-      })
+    // Replace 'YOUR_FIREBASE_LINK' with your actual Firebase link
+    firestore.collection('answers').add({
+      answer,
+      userId: user.uid,
+      timestamp: currentTime,
+      isCorrect: isAnswerCorrect,
+    })
       .then(() => {
         console.log('Answer submitted successfully!');
         setAnswer('');
-        setIsSubmitting(false);
-
+        setIsCorrect(isAnswerCorrect);
         if (isAnswerCorrect) {
-          setIsCorrect(true);
           setTimeLeft(10); // Set the timer for 10 seconds for the next question
         } else {
-          setIsCorrect(false);
           alert('Wrong answer!'); // Show an alert for wrong answer
         }
       })
       .catch((error) => {
         console.error('Error submitting answer:', error);
-        setIsSubmitting(false);
       });
   };
 
@@ -91,7 +75,7 @@ const QuestionPage = () => {
     return (
       <div className="question-page">
         <h2>Time Left</h2>
-        <div className="time-left">{ }</div>
+        <div className="time-left">{timeLeft}</div>
         <button className="logout-button" onClick={handleLogout}>
           Logout
         </button>
@@ -107,7 +91,10 @@ const QuestionPage = () => {
           This is a sample question that spans across multiple lines. The question is long enough to showcase the styling applied to the question div. You can change the font, style, and add any additional CSS properties to make it visually appealing.
         </p>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        postAnswer();
+      }}>
         <label>
           Answer:
           <input
@@ -117,14 +104,13 @@ const QuestionPage = () => {
           />
         </label>
         <div className="button-container">
-          <button className="submit-button" type="submit" disabled={isSubmitting}>
+          <button className="submit-button" type="submit" >
             Submit Answer
           </button>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
         </div>
-        {isSubmitting && <div className="submitting">Submitting...</div>}
         {isCorrect && (
           <div className="correct-answer-popup">
             Correct answer!
