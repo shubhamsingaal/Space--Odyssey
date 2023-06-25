@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AlreadyCompleted from './alreadycompleted';
-import { auth, firestore ,db, collection} from '../components/firebase';
+// import AlreadyCompleted from './alreadycompleted';
+import { auth, db} from '../components/firebase';
 import '../styles/game.css';
-import 'firebase/firestore';
-import {uid} from 'uid';
+import {addDoc, doc, collection, getDoc, getDocs} from 'firebase/firestore';
 
 const QuestionPage = () => {
   document.title = "Question- Space Odyssey| ISTE Students' Chapter NIT Durgapur"
@@ -13,9 +12,33 @@ const QuestionPage = () => {
   const [timeLeft, setTimeLeft] = useState(null);
   const navigate = useNavigate();
 
+  // comment this down on production
+  // to check for all answers
+  const checkAnswers = async (e) => {
+    const queryRef = collection(db, 'answer')  // users
+    const querySnapshot = await getDocs(queryRef)
+    let greatUsers = []
+    querySnapshot.forEach((doc) => {
+      let data = doc.data()
+      if(data.answer==='correct') greatUsers.add(data.userID)
+      console.log(`Document ID: ${doc.id} Data: ${doc.data()}`)
+    })
+    console.log(greatUsers)
+
+    let correctUserNames = []
+    for(let user_id of greatUsers) {
+      let user_data = await getDoc(doc(db, 'user', user_id))
+      correctUserNames.add(user_data.data().name)
+    }
+
+    console.log('Correct users are:')
+    console.log(correctUserNames)
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
+      checkAnswers()
     });
 
     return () => unsubscribe();
@@ -37,22 +60,27 @@ const QuestionPage = () => {
     return () => clearTimeout(timer);
   }, [timeLeft, navigate]);
 
-  const postAnswer = () => {
+  const postAnswer = async (e) => {
+    e.preventDefault()
+
+    e.target.setAttribute('disabled', true)
+    e.target.innerHTML = 'please wait...'
+
     const currentTime = new Date().getTime();
 
-   firestore.collection(db,'answer').add({
-      answer,
-      userId: user.uid,
+    await addDoc(collection(db, 'answer'), {
+      answer: answer,
+      userID: user.uid,
       timestamp: currentTime,
     })
-      .then(() => {
-        console.log('Answer submitted successfully!');
-        setAnswer('');
-        setTimeLeft(100); // Set the timer for 10 seconds for the next question
-      })
-      .catch((error) => {
-        console.error('Error submitting answer:', error);
-      });
+    .then(() => {
+      console.log('Answer submitted successfully!');
+      setAnswer('');
+      setTimeLeft(10); // Set the timer for 10 seconds for the next question
+    })
+    .catch((error) => {
+      console.error('Error submitting answer:', error);
+    });
   };
 
   const handleLogout = () => {
