@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 function AlreadyCompleted() {
-    document.title = "Already Completed | ISTE Students' Chapter NIT Durgapur"
+    document.title = "Already Completed - Space Odyssey| ISTE Students' Chapter NIT Durgapur"
 
     return (<div>
         <h2>Thanks for playing!</h2>

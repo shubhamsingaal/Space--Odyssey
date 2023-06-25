@@ -6,7 +6,7 @@ import { doc, setDoc } from "firebase/firestore";
 import '../styles/auth.css'
 
 function Login() {
-    document.title = "Login | Panorama"
+    document.title = "Login - Space Odyssey | Panorama"
 
     // firebase configurations, do not change
     const [authState, setAuthState] = useState({
