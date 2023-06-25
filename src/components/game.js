@@ -4,7 +4,7 @@ import AlreadyCompleted from './alreadycompleted';
 import { auth, firestore ,db, collection} from '../components/firebase';
 import '../styles/game.css';
 import 'firebase/firestore';
-import {uid} from 'uid';
+// import {uid} from 'uid';
 
 const QuestionPage = () => {
   document.title = "Question- Space Odyssey| ISTE Students' Chapter NIT Durgapur"
