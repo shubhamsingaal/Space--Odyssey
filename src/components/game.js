@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import AlreadyCompleted from './alreadycompleted';
-import { auth, db} from '../components/firebase';
+import { auth, db } from '../components/firebase';
 import '../styles/game.css';
-import {addDoc, doc, collection, getDoc, getDocs} from 'firebase/firestore';
+import { addDoc, doc, collection, getDoc, getDocs } from 'firebase/firestore';
 
 const QuestionPage = () => {
   document.title = "Question- Space Odyssey| ISTE Students' Chapter NIT Durgapur"
   const [user, setUser] = useState(null);
   const [answer, setAnswer] = useState('');
-  const [timeLeft, setTimeLeft] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(-1);
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
   // comment this down on production
@@ -20,13 +21,13 @@ const QuestionPage = () => {
     let greatUsers = []
     querySnapshot.forEach((doc) => {
       let data = doc.data()
-      if(data.answer==='correct') greatUsers.add(data.userID)
+      if (data.answer === 'correct') greatUsers.add(data.userID)
       console.log(`Document ID: ${doc.id} Data: ${doc.data()}`)
     })
     console.log(greatUsers)
 
     let correctUserNames = []
-    for(let user_id of greatUsers) {
+    for (let user_id of greatUsers) {
       let user_data = await getDoc(doc(db, 'user', user_id))
       correctUserNames.add(user_data.data().name)
     }
@@ -35,18 +36,18 @@ const QuestionPage = () => {
     console.log(correctUserNames)
   }
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-      checkAnswers()
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const [authState, setAuthState] = useState({
+    isSignedIn: false,
+    pending: true,
+    user: null,
+  })
 
   useEffect(() => {
+    if(!submitted) return 
+
     if (timeLeft === 0) {
-      navigate('/AlreadyCompleted'); // Navigate to the next page after the timer ends
+      navigate('/completed', {replace:true});
+      console.log("trigger"); // Navigate to the next page after the timer ends
     }
 
     let timer = null;
@@ -58,7 +59,27 @@ const QuestionPage = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [timeLeft, navigate]);
+  }, [timeLeft, navigate, submitted]);
+
+
+  useEffect(() => {
+    const unregisterAuthObserver = auth.onAuthStateChanged(user => {
+      setAuthState({ user, pending: false, isSignedIn: !!user })
+      setUser(user)
+    }
+    )
+    return () => unregisterAuthObserver()
+  }, [])
+  // const navigate = useNavigate()
+
+
+  if (authState.pending) {
+    return (<h1> loading... </h1>)
+  }
+  else if (authState.isSignedIn)
+    navigate('/game', { replace: true });
+
+
 
   const postAnswer = async (e) => {
     e.preventDefault()
@@ -73,14 +94,15 @@ const QuestionPage = () => {
       userID: user.uid,
       timestamp: currentTime,
     })
-    .then(() => {
-      console.log('Answer submitted successfully!');
-      setAnswer('');
-      setTimeLeft(10); // Set the timer for 10 seconds for the next question
-    })
-    .catch((error) => {
-      console.error('Error submitting answer:', error);
-    });
+      .then(() => {
+        console.log('Answer submitted successfully!');
+        setSubmitted(true);
+        setAnswer('');
+        setTimeLeft(2); // Set the timer for 10 seconds for the next question
+      })
+      .catch((error) => {
+        console.error('Error submitting answer:', error);
+      });
   };
 
   const handleLogout = () => {
@@ -89,11 +111,9 @@ const QuestionPage = () => {
   };
 
 
-  if (!user) {
-    return <div>Please log in to access this page.</div>;
-  }
 
-  if (timeLeft !== null && timeLeft > 0) {
+
+  if (timeLeft !== -1 && timeLeft > 0) {
     return (
       <div className="question-page">
         <h2>Time Left</h2>
@@ -111,7 +131,11 @@ const QuestionPage = () => {
       <h2>Question Page</h2>
       <div className="question-div">
         <p>
-          This is a sample question that spans across multiple lines. The question is long enough to showcase the styling applied to the question div. You can change the font, style, and add any additional CSS properties to make it visually appealing.
+          As a space explorer, you embark on a mission to navigate through a complex asteroid belt. Your spacecraft starts at a safe location in space. While preparing for your journey, you receive a peculiar set of navigation instructions encoded in a mysterious transmission. The instructions are crucial for safely maneuvering through the treacherous asteroid belt.
+          Curious and determined, you begin decoding the instructions, and to your surprise, they seem to be related to a unique concept called "Stellar Sequences." Each instruction corresponds to a particular maneuver you need to make, but the nature of the maneuvers is intertwined with these sequences.
+          The encoded instructions guide you through the asteroid belt based on the properties of Stellar Sequences. A Stellar Sequence is defined as a sequence whose the decimal notations of all its digits are the same.
+          You swiftly implement an algorithm to calculate the number Stellar Sequence from 1 to n. As you traverse the asteroid belt, you encounter various obstacles, and for each obstacle, you decode the corresponding instruction using the algorithm.
+
         </p>
       </div>
       <form onSubmit={postAnswer}>

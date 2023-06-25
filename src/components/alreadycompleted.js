@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import "../styles/completed.css"
+// import "../styles/completed.css"
 
 function AlreadyCompleted() {
     document.title = "Already Completed - Space Odyssey| ISTE Students' Chapter NIT Durgapur"
