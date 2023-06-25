@@ -1,13 +1,42 @@
 /* questionPage.css */
 
 .question-page {
-    background-color: #1a1a1a;
+    background-image: url(../assets/banner_img.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0;
+    padding: 260px px 0 100px;
     color: #ffffff;
     padding: 20px;
 }
 
+
+
+
+
 h2 {
     margin-bottom: 20px;
+}
+
+.quetion-heading {
+    font-size: 45px;
+    color: white;
+    margin-left: 100px;
+    font-size: 3vw;
+    /* make our h1 tag larger */
+    font-family: sans-serif;
+    /* choosing our font */
+    background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(225, 255, 255, 0.5) 20%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(97, 183, 217) 52%, rgb(224, 246, 255) 60%, rgb(78, 99, 132) 61%);
+    /* you can change the colors based on your preference */
+    background-clip: text;
+    /*it defines how far the background should extend within an element, here we set it to text */
+    -webkit-background-clip: text;
+    /*for browsers compatibility */
+    -webkit-text-fill-color: transparent;
+    /* specifies the fill color of text characters. We use transparent to use the background as our text fill  */
+    animation: wave 2000ms ease alternate infinite;
+    transition: all 0.4s ease;
 }
 
 .question-div {

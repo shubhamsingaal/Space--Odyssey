@@ -2176,6 +2176,11 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@lukeed/csprng@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
+  integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
+
 "@mui/base@5.0.0-beta.5":
   version "5.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.5.tgz#b566f3beb1eb2823139eabaf52014cf7be900015"
@@ -9877,6 +9882,13 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+uid@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/uid/-/uid-2.0.2.tgz#4b5782abf0f2feeefc00fa88006b2b3b7af3e3b9"
+  integrity sha512-u3xV3X7uzvi5b1MncmZo3i2Aw222Zk1keqLA1YkHldREkAhAqi65wuPfe7lHx8H/Wzy+8CE7S7uS3jekIM5s8g==
+  dependencies:
+    "@lukeed/csprng" "^1.0.0"
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

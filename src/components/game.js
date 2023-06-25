@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, firestore } from '../components/firebase';
+import AlreadyCompleted from './alreadycompleted';
+import { auth, firestore ,db, collection} from '../components/firebase';
 import '../styles/game.css';
+import 'firebase/firestore';
+import {uid} from 'uid';
 
 const QuestionPage = () => {
+  document.title = "Question- Space Odyssey| ISTE Students' Chapter NIT Durgapur"
   const [user, setUser] = useState(null);
   const [answer, setAnswer] = useState('');
-  const [isCorrect, setIsCorrect] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
   const navigate = useNavigate();
 
@@ -20,7 +23,7 @@ const QuestionPage = () => {
 
   useEffect(() => {
     if (timeLeft === 0) {
-      navigate('/next-page'); // Navigate to the next page after the timer ends
+      navigate('/AlreadyCompleted'); // Navigate to the next page after the timer ends
     }
 
     let timer = null;
@@ -37,25 +40,15 @@ const QuestionPage = () => {
   const postAnswer = () => {
     const currentTime = new Date().getTime();
 
-    // Here, you should implement the logic to check if the answer is correct
-    const isAnswerCorrect = answer === 'something';
-
-    // Replace 'YOUR_FIREBASE_LINK' with your actual Firebase link
-    firestore.collection('answers').add({
+   firestore.collection(db,'answer').add({
       answer,
       userId: user.uid,
       timestamp: currentTime,
-      isCorrect: isAnswerCorrect,
     })
       .then(() => {
         console.log('Answer submitted successfully!');
         setAnswer('');
-        setIsCorrect(isAnswerCorrect);
-        if (isAnswerCorrect) {
-          setTimeLeft(10); // Set the timer for 10 seconds for the next question
-        } else {
-          alert('Wrong answer!'); // Show an alert for wrong answer
-        }
+        setTimeLeft(100); // Set the timer for 10 seconds for the next question
       })
       .catch((error) => {
         console.error('Error submitting answer:', error);
@@ -66,6 +59,7 @@ const QuestionPage = () => {
     auth.signOut();
     navigate('/'); // Redirect to the home page after logout
   };
+
 
   if (!user) {
     return <div>Please log in to access this page.</div>;
@@ -85,16 +79,14 @@ const QuestionPage = () => {
 
   return (
     <div className="question-page">
+      <h1 className="question-heading">Space Odyssey</h1>
       <h2>Question Page</h2>
       <div className="question-div">
         <p>
           This is a sample question that spans across multiple lines. The question is long enough to showcase the styling applied to the question div. You can change the font, style, and add any additional CSS properties to make it visually appealing.
         </p>
       </div>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        postAnswer();
-      }}>
+      <form onSubmit={postAnswer}>
         <label>
           Answer:
           <input
@@ -104,18 +96,13 @@ const QuestionPage = () => {
           />
         </label>
         <div className="button-container">
-          <button className="submit-button" type="submit" >
+          <button className="submit-button" type="submit">
             Submit Answer
           </button>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
         </div>
-        {isCorrect && (
-          <div className="correct-answer-popup">
-            Correct answer!
-          </div>
-        )}
       </form>
     </div>
   );

@@ -8,8 +8,6 @@ import {
   Button,
   Container,
   Hidden,
-  Stack,
-  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
