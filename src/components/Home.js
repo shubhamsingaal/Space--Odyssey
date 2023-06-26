@@ -54,7 +54,7 @@ const Home = () => {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   // eslint-disable-next-line
   const [index, setIndex] = useState(1);
-  const toRotate = ["The Limits", "The surrounding", "The world"];
+  const toRotate = ["Push Limits", "Gain Productivity", "Win Prizes"];
   const period = 2000;
 
   useEffect(() => {
