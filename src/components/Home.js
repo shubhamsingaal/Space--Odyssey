@@ -17,6 +17,7 @@ import { section1Content } from "../utils/content";
 import useMeasure from "react-use-measure";
 import Title from "../components/Title";
 import logo from "../assets/logo.png";
+import bg from "../assets/banner_img.png";
 import { useState, useEffect } from "react";
 const {
   MainBG,
@@ -197,7 +198,7 @@ const Home = () => {
         />
 
       </Box>
-      <Box style={{ backgroundColor: "black" }}>
+      <Box>
         <section className="skill" id="rules" >
           <div className="container">
             <div className="row">

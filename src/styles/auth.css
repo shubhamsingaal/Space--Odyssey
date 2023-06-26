@@ -3,9 +3,9 @@
 }
 
 .wrapper {
-    width: 100vw;
     height: 100vh;
     display: flex;
+    scroll-behavior: smooth;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -30,8 +30,7 @@
     background: rgb(221, 214, 214);
     border-radius: 10px;
     display: flex;
-    width: 100%;
-    max-width: 350px;
+    width: fit-content;
     margin: 15px auto 20px auto;
     padding: 1.5em 3em 3em 3em;
     align-items: center;
