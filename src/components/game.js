@@ -25,12 +25,11 @@ Question 1: As you move forward through the vast expanse of space, you encounter
 The encoded navigation instructions consist of a series of maneuvers represented by numerical codes. Each code corresponds to a specific action you must take to navigate through the asteroid belt. However, deciphering these instructions and determining the minimum number of maneuvers required to reach your destination safely is crucial for the success of your mission.
 In this particular scenario, the numerical codes represent the current coordinates of your spacecraft and the destination coordinates you need to reach in the asteroid belt. Each maneuver involves choosing an integer k from the range of 1 to 10 and either adding it to or subtracting it from the current coordinates of your spacecraft. The objective is to transform the starting coordinates to match the destination coordinates by carefully selecting the maneuvers.
 Now, utilizing your problem-solving skills and understanding of the encoded instructions, how can you decipher the numerical codes and calculate the minimum number of maneuvers needed to transform the starting coordinates of your spacecraft to match the destination coordinates? Your expertise in unraveling the encoded instructions and determining the optimal sequence of maneuvers will be vital in navigating through the asteroid belt and ensuring a safe and successful journey through space.
-
-\`\`\`python
-Example 1
-Input: current coordinate = 13 , distination = 42
-Output: 3
-explanation:
+<br>
+Example 1 <br>
+Input: current coordinate = 13 , distination = 42<br>
+Output: 3<br>
+Explanation:<br>
 13→23→32→42 (add 10, add 9, add 10).`,
     },
     {
