@@ -52,7 +52,34 @@ Output: ? `,
     },
     {
       id: 2,
-      text: 'Question 2: Who painted the Mona Lisa?',
+      text: `
+As you move forward through the vast expanse of space, you encounter a dense and treacherous asteroid belt blocking your path. Fortunately, you have a set of navigation instructions to guide you through the perilous obstacles. However, these instructions are encoded in a peculiar way, adding an extra layer of complexity to your mission.
+
+The encoded navigation instructions consist of a series of maneuvers represented by numerical codes. Each code corresponds to a specific action you must take to navigate through the asteroid belt. However, deciphering these instructions and determining the minimum number of maneuvers required to reach your destination safely is crucial for the success of your mission.
+
+In this particular scenario, the numerical codes represent the current coordinates of your spacecraft and the destination coordinates you need to reach in the asteroid belt. Each maneuver involves choosing an integer k from the range of 1 to 10 and either adding it to or subtracting it from the current coordinates of your spacecraft. The objective is to transform the starting coordinates to match the destination coordinates by carefully selecting the maneuvers.
+
+Now, utilizing your problem-solving skills and understanding of the encoded instructions, how can you decipher the numerical codes and calculate the minimum number of maneuvers needed to transform the starting coordinates of your spacecraft to match the destination coordinates? Your expertise in unraveling the encoded instructions and determining the optimal sequence of maneuvers will be vital in navigating through the asteroid belt and ensuring a safe and successful journey through space.
+
+## Example 1
+\`\`\`Input: current coordinate = 13 , destination = 42
+Output: 3
+explanation:
+13→23→32→42 (add 10, add 9, add 10)
+\`\`\`
+
+## Test Case 1:
+\`Input: current coordinate = 100 , destination = 10000\`
+## Test Case 2:
+\`Input: current coordinate = 10000 , destination = 100\`
+## Test Case 3:
+\`Input: current coordinate = 123456789 , destination = 987654321\`
+
+## Answer format:
+\`\`\`Let the answer for 1st, 2nd and 3rd test cases be a, b, c
+return its sum, i.e a+b+c 
+\`\`\`
+`,
     },
     // Add more questions here
   ];
@@ -102,7 +129,7 @@ Output: ? `,
         console.log('Answer submitted successfully!');
         setSubmitted(true);
         setAnswer('');
-        const next_date = new Date(`Jun ${new Date().getDate() + 1} 2023 16:00:00 GMT+0530 (India Standard Time)`)
+        const next_date = new Date(`Jun ${new Date().getDate() + 1} 2023 00:00:00 GMT+0530 (India Standard Time)`)
         setTimeLeft(parseInt((next_date - new Date()) / 1000)); // Set the timer for 10 seconds for the next question
       })
       .catch((error) => {
