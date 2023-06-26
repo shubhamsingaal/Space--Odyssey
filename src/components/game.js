@@ -128,8 +128,7 @@ explanation:
 
   return (
     <div className="question-page">
-      <h1 className="question-heading">Space Odyssey</h1>
-      <h2>Question Page</h2>
+      <h1>Space Odyssey</h1>
       <div className="question-div">
         <p>
           <ReactMarkdown 
