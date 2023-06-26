@@ -47,11 +47,11 @@ h2{
 .question-div {
     background-color: #2b2b2b;
     padding: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 100px;
     font-size: 18px;
     line-height: 1.5;
     position: relative;
-    margin-bottom: 5rem !important;
+    margin-bottom: 2rem !important;
 }
 
 .question-section {
