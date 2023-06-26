@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/landing.css"
 import TrackVisibility from 'react-on-screen';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
-import {  Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import {
   Button,
   Container,
@@ -98,7 +98,7 @@ const Home = () => {
       <Box sx={{ position: "absolute", zIndex: -10, top: 0, left: 0, right: 0 }}>
         <img src={MainBG} style={{ width: "100%" }} />
       </Box>
-      <img src={logo} style={{ height: "196px", objectFit: "contain" }} />
+      <img src={logo} className="panoLogo" />
 
       <div>
         <h1 className="heading" data-heading="Good times" contenteditable>
@@ -112,18 +112,30 @@ const Home = () => {
               <TrackVisibility>
                 {({ isVisible }) =>
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                 
+
                     <h1>{`Time to Code `} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "The Limits", "The sourroundings", "The World" ]'><span className="wrap">{text}</span></span></h1>
                     <p>
                       Coding competitions are a great way for young coders to apply  what they <br /> know in a  fun context and improve their analytical and problem-solving skills.
                     </p>
-                    <button onClick={() => console.log('connect')}><a href="./auth">Start Game </a> <ArrowRightCircle size={25} /></button>
+                    <a href="./auth"><button onClick={() => console.log('connect')} class="btn" type="button">
+                      <strong>Play</strong>
+                      <div id="container-stars">
+                        <div id="stars"></div>
+                      </div>
+
+                      <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                      </div>
+
+                    </button> </a>
+
                   </div>}
               </TrackVisibility>
             </Col>
             <Col xs={12} md={6} xl={5}>
               <TrackVisibility>
-               
+
               </TrackVisibility>
             </Col>
           </Row>
@@ -162,7 +174,7 @@ const Home = () => {
         <img
           src={CliffImage}
           style={{
-           
+
             height: "100%",
             position: "absolute",
             right: 0,
@@ -175,7 +187,7 @@ const Home = () => {
         <img
           src={HorseImage}
           style={{
-            
+
             position: "absolute",
             height: isSmallScreen ? "30%" : "38%",
             right: "14%",
@@ -193,26 +205,26 @@ const Home = () => {
                 <div className="skill-bx wow zoomIn">
                   <h2>Rules</h2>
                   <p>Rules, regulations and general guidelines:</p>
-                  <hr />
+
                   <span>
                     1. Participants must follow our official pages at [insta],[fb],[linkedin]
-                  </span> <hr />
+                  </span>
                   <span>
                     2. All participants must adhere to sportsman spirit, and not indulge in any unfair means to win the adventure.
-                  </span> <hr />
+                  </span>
                   <span>
                     3. Cyber-based attacks such as DDoS, Script Injection and breaking into the servers are prohibited.
-                  </span> <hr />
+                  </span>
                   <span>
                     4. Do not press F12 or open Developer Tools during the game, it will lead to disqualification, and the game will end then and there.
-                  </span> <hr />
+                  </span>
                   <span>
                     5. Only one participation per person is allowed. Using multiple accounts to play the game is a violation of these terms.
-                  </span> <hr />
-                 
+                  </span>
+
                   <span>
                     6. Tip: Keep your curiosity up always and do not use ChatGPT :)
-                  </span> <hr />
+                  </span>
 
                 </div>
 
