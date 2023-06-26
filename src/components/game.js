@@ -4,19 +4,31 @@ import { auth, db } from '../components/firebase';
 import '../styles/game.css';
 import { addDoc, doc, collection, getDoc, getDocs } from 'firebase/firestore';
 
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw"
+import remarkGfm from "remark-gfm"
+
 const QuestionPage = () => {
   document.title = "Question- Space Odyssey| ISTE Students' Chapter NIT Durgapur";
   const [user, setUser] = useState(null);
   const [answer, setAnswer] = useState('');
   const [timeLeft, setTimeLeft] = useState(-1);
   const [submitted, setSubmitted] = useState(false);
-  const [questionIndex, setQuestionIndex] = useState(0); // Track the current question index
+  const [questionIndex, setQuestionIndex] = useState(new Date().getDate() - 26); // Track the current question index
   const navigate = useNavigate();
 
   const questions = [
     {
       id: 1,
-      text: 'Question 1: What is the capital of France?',
+      text: `
+Question 1: You are in a space shuttle about to land on the Moon.
+While you must be wondering how and why would you be solving this question if you are already
+going to the moon and doing such an important mission. But let me tell you this is going to be the
+most important question of your life. Given this code predict the output
+\`\`\`python
+print("hello world")
+\`\`\`
+what else do you think`,
     },
     {
       id: 2,
@@ -70,7 +82,8 @@ const QuestionPage = () => {
         console.log('Answer submitted successfully!');
         setSubmitted(true);
         setAnswer('');
-        setTimeLeft(10); // Set the timer for 10 seconds for the next question
+        const next_date = new Date(`Jun ${new Date().getDate()+1} 2023 16:00:00 GMT+0530 (India Standard Time)`)
+        setTimeLeft(parseInt((next_date-new Date())/1000)); // Set the timer for 10 seconds for the next question
       })
       .catch((error) => {
         console.error('Error submitting answer:', error);
@@ -97,6 +110,7 @@ const QuestionPage = () => {
     return (
       <div className="question-page">
         <h2>Time Left</h2>
+        <p>Get back tomorrow to see the next question </p>
         <div className="time-left">
           {hours < 10 ? '0' + hours : hours}:
           {minutes < 10 ? '0' + minutes : minutes}:
@@ -114,7 +128,12 @@ const QuestionPage = () => {
       <h1 className="question-heading">Space Odyssey</h1>
       <h2>Question Page</h2>
       <div className="question-div">
-        <p>{currentQuestion.text}</p>
+        <p>
+          <ReactMarkdown 
+            children={currentQuestion.text} 
+            rehypePlugins={[rehypeRaw, remarkGfm]}>
+          </ReactMarkdown>
+        </p>
       </div>
       <form onSubmit={postAnswer}>
         <label>
