@@ -50,13 +50,13 @@ export const Footer = () => {
                     </Col>
                     <Col size={12} sm={6} className="text-center text-sm-end">
                         <div className="social-icon">
-                            <a href="https://www.linkedin.com/company/istenitdgp/mycompany/" target="blank">
+                            <a href="https://www.instagram.com/istenitdgp/" target="blank">
                                 <img src={navIcon1} alt="" />
                             </a>
                             <a href="https://www.facebook.com/istenitdgp/" target="blank">
                                 <img src={navIcon2} alt="" />
                             </a>
-                            <a href="https://www.instagram.com/istenitdgp/?hl=en" target="blank">
+                            <a href="https://www.instagram.com/istenitdgp/" target="blank">
                                 <img src={navIcon3} alt="" />
                             </a>
                         </div>
