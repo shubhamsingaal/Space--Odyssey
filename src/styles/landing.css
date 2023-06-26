@@ -95,7 +95,9 @@ nav ul li a:hover {
 }
 
 .footer {
+  position: relative;
     text-align: center;
+    top:10rem;
     padding: 0px 0;
     background-color: #333;
     color: #5c5a5a;
@@ -110,10 +112,10 @@ nav ul li a:hover {
 .skill-bx {
     display: grid;
     position: relative;
-    background: #000000d7;
+    background: #000000ad;
     text-align: center;
- 
-    top: -3rem;
+  padding-top: 2rem;
+    top: 3rem;
 }
 
 .skill span {
@@ -340,7 +342,7 @@ nav ul li a:hover {
     .heading{
         font-size: 3rem;
         text-align: center;
-        margin-top: 20%;
+        margin-top: 0%;
         margin-left: 0%;
         position: relative;
     }
@@ -359,7 +361,8 @@ nav ul li a:hover {
     .skill-bx{
       border-top: 1px solid white;
       /* margin-top: %; */
-      top:-3rem;
+      top:1rem;
+
       border-radius: 0.3rem;
     }
     

@@ -213,7 +213,7 @@ const Home = () => {
                   <p>Rules, regulations and general guidelines:</p>
 
                   <span>
-                    1. Participants must follow our official pages at [insta],[fb],[linkedin]
+                    1. Participants must follow our official pages at <a href="https://www.instagram.com/istenitdgp/">instagram</a>,  <a href="https://www.facebook.com/istenitdgp/">facebook</a>, <a href="https://www.linkedin.com/company/istenitdgp/">linkedin</a>
                   </span>
                   <span>
                     2. All participants must adhere to sportsman spirit, and not indulge in any unfair means to win the game.
