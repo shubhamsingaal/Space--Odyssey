@@ -1,11 +1,12 @@
 /* questionPage.css */
 
 .question-page {
-    background-image: url(../assets/banner_img.png);
+    /* background-image: url(../assets/banner_img.png);
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 0;
+    margin-top: 0; */
+    background-color: black;
     padding: 260px px 0 100px;
     color: #ffffff;
     padding: 20px;
@@ -52,6 +53,7 @@ h2{
     line-height: 1.5;
     position: relative;
     margin-bottom: 2rem !important;
+    top:10rem;
 }
 
 .question-section {
@@ -62,7 +64,8 @@ form {
     display: flex;
     flex-direction: column;
     position: relative;
-    top:5rem;
+    top:13rem;
+    padding-bottom: 2rem;
 }
 
 label {
@@ -156,7 +159,7 @@ input[type="text"]:focus {
         padding: 20px ;
         width: 100%;
         position: relative;
-        top:5rem;
+        top:13rem;
         margin-bottom: 20px;
         font-size: 0.8rem;
         text-align: justify;
