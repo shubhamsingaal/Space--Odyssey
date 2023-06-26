@@ -50,7 +50,10 @@ nav ul li a:hover {
     padding: 80px 0;
     background-color: #f0f0f0;
 }
-
+.animate__animated{
+  position: relative;
+  top:5rem;
+}
 .hero-section h1 {
     font-size: 36px;
     margin-bottom: 20px;
@@ -106,12 +109,11 @@ nav ul li a:hover {
 
 .skill-bx {
     display: grid;
-    /* background: #000000; */
-    background-image: url(../assets/banner_img.png);
-    margin-top: -20%;
+    position: relative;
+    background: #000000d7;
     text-align: center;
-
-
+    padding-top: 7rem;
+    top: -17rem;
 }
 
 .skill span {
@@ -138,8 +140,11 @@ nav ul li a:hover {
 .heading {
     color: white;
     /* text-align: center; */
-    margin-left: 100px;
+    margin-left: 8rem;
     font-size: 5rem;
+    position: relative;
+    display: flex;
+    top:4rem;
     /* make our h1 tag larger */
     font-family: sans-serif;
     /* choosing our font */
@@ -353,7 +358,8 @@ nav ul li a:hover {
     
     .skill-bx{
       border-top: 1px solid white;
-      margin-top: -100%;
+      /* margin-top: %; */
+      top:-20rem;
       border-radius: 0.3rem;
     }
     
