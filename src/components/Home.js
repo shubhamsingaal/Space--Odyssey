@@ -5,6 +5,7 @@ import "../styles/background.css"
 import TrackVisibility from 'react-on-screen';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import { Row, Col } from "react-bootstrap";
+import {Footer} from "./footer"
 import {
   Button,
   Container,
@@ -19,6 +20,9 @@ import Title from "../components/Title";
 import logo from "../assets/logo.png";
 import bg from "../assets/banner_img.png";
 import { useState, useEffect } from "react";
+
+// import { Container, Row, Col } from "react-bootstrap";
+
 const {
   MainBG,
   TreesImage,
@@ -199,6 +203,7 @@ const Home = () => {
 
       </Box>
       <Box>
+      
         <section className="skill" id="rules" >
           <div className="container">
             <div className="row">
@@ -211,7 +216,7 @@ const Home = () => {
                     1. Participants must follow our official pages at [insta],[fb],[linkedin]
                   </span>
                   <span>
-                    2. All participants must adhere to sportsman spirit, and not indulge in any unfair means to win the adventure.
+                    2. All participants must adhere to sportsman spirit, and not indulge in any unfair means to win the game.
                   </span>
                   <span>
                     3. Cyber-based attacks such as DDoS, Script Injection and breaking into the servers are prohibited.
@@ -226,16 +231,26 @@ const Home = () => {
                   <span>
                     6. Tip: Keep your curiosity up always and do not use ChatGPT :)
                   </span>
-
+               
                 </div>
 
               </div>
             </div>
           </div>
+         
 
         </section>
+     
+  
       </Box>
+      <Box>
+        <Footer />
+      </Box>
+      
     </Box>
+    
+   
+    
 
 
   );
