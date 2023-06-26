@@ -343,7 +343,7 @@ nav ul li a:hover {
         font-size: 3rem;
         text-align: center;
         margin-top: 0%;
-        margin-left: 0%;
+        margin-left: 2%;
         position: relative;
     }
     .btn{
@@ -351,6 +351,7 @@ nav ul li a:hover {
         width: 90%;
         display: flex;
         left:5%;
+        top:3rem;
     }
 
     .css-1oqqzyl-MuiContainer-root{
