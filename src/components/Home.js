@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import "../styles/landing.css"
+import "../styles/background.css"
 import TrackVisibility from 'react-on-screen';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import { Row, Col } from "react-bootstrap";
@@ -100,10 +101,9 @@ const Home = () => {
       </Box>
       <img src={logo} className="panoLogo" />
 
-      <div>
-        <h1 className="heading" data-heading="Good times" contenteditable>
+      <div className="heading" data-heading="Good times" >
+        
           Space Odyssey
-        </h1>
       </div>
       <section className="banner" id="home">
         <Container>

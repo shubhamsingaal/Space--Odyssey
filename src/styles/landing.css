@@ -131,10 +131,9 @@ nav ul li a:hover {
 }
 
 .heading {
-    font-size: 45px;
     color: white;
     margin-left: 100px;
-    font-size: 3vw;
+    font-size: 5rem;
     /* make our h1 tag larger */
     font-family: sans-serif;
     /* choosing our font */
@@ -327,7 +326,12 @@ nav ul li a:hover {
     .panoLogo{
         height: 5rem;
     }
-
+    .heading{
+        font-size: 3rem;
+        margin-left: none;
+        top:50% !important;
+        position: relative;
+    }
     .btn{
         position: relative;
         width: 90%;
