@@ -51,7 +51,7 @@ function Login() {
                     lastSignInTime: result.user.metadata.lastSignInTime,
                 },
                     { merge: true });
-                navigate("/", { "replace": true })
+                navigate("/game", { "replace": true })
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
