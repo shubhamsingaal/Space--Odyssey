@@ -4,14 +4,15 @@ import navIcon2 from "../assets/nav-icon2.svg";
 import navIcon3 from "../assets/nav-icon3.svg";
 import logo from "../assets/logo.png";
 import { Container, Row, Col } from "react-bootstrap";
-import "../styles/footer.css"
+
 
 export const Footer = () => {
     const styles = `
     .footer {
       
       background-color: black;
-      padding: 20px 0;
+     
+      
     }
 
     .footer img {
@@ -41,6 +42,7 @@ export const Footer = () => {
 
     return (
         <footer className="footer">
+          <hr />
             <Container>
                 <Row className="align-items-center">
                     <Col size={12} sm={6}>
