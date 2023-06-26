@@ -46,8 +46,8 @@ Output: 10 <br> <br>
 8 -> steller sequence<br>
 9 -> steller sequence<br>
 10 -> not steller sequence (since one digit is 1 and other is 0)<br>
-11 -> steller sequence <br> 
-Case: Input : 49500 <br>
+11 -> steller sequence <br> <br>
+Case: <br> Input : 49500 <br>
 Output: ? `,
     },
     {
