@@ -125,10 +125,6 @@ input[type="text"]:focus {
     margin: 0;
 }
 
-.language-python{
-    position: relative;
-    right: 1rem;
-}
 
 
 .time-left {
@@ -159,7 +155,7 @@ input[type="text"]:focus {
         padding: 20px ;
         width: 100%;
         position: relative;
-        top:2rem;
+        top:13rem;
         margin-bottom: 20px;
         font-size: 0.8rem;
         text-align: justify;
