@@ -83,7 +83,41 @@ return its sum, i.e a+b+c
 \`\`\`
 `,
     },
-    // Add more questions here
+    {
+      id: 3,
+      text:`
+After successfully deciphering the previously encoded navigation instructions, you feel a surge of accomplishment and confidence. Your expertise in code-breaking has paid off, and now you are ready to put your piloting skills to the test as you navigate through the treacherous asteroid belt.
+
+As you venture deeper into the asteroid belt, the complexity of the obstacles increases. Massive boulders float ominously, their jagged edges gleaming in the distant sunlight. Swift-moving clusters of smaller asteroids zip by, creating a dangerous labyrinth requiring utmost focus and precision.
+
+As you move forward you encountered a planet, you wish to explore the planet, but soon found out that the planet is the residence of a highly advanced life form, they require a password to enter it.
+
+Fortunately, your crewmate hacks into the system of the planet and steals the instructions to get the password and codes, the instructions are as follows, given the list of code, the password is obtained by getting the summation of the next prime number associated with the respective code
+      
+## Example 1
+    input:
+        codes = [2, 5, 12, 15, 20]
+    output:
+        password = 63
+      
+### Explanation:
+    Next prime number of each of the code:
+        nextPrime=[3,7,13,17,23]
+    Now the password is supposed to be the sum of all the next primes of the corresponding codes.
+    
+    Therefore, password = 3+7+13+17+23 = 63
+      
+## Test Case 
+    input: codes = [325235, 3254234, 213432, 87685, 5435244]   
+      
+## Answer format: 
+    let nextPrime = [x, y, z, a, b]
+    return ((x+y+z+a+b+c)%123)*123 
+    
+    i,e ((password%123)*123)      
+`
+    }
+    
   ];
 
   useEffect(() => {
