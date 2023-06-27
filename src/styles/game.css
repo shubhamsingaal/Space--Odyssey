@@ -169,11 +169,13 @@ input[type="text"]:focus {
 
 code{
     background-color: rgba(0,0,0,0.8);
-    width: 100%;
+    width: 90%;
     max-width: fit-content;
     border-radius: 5px;
     padding: 10px;
     display: flex;
+    flex-wrap: wrap;
     margin-left: 10px;
     margin-right: 10px;
+    overflow-x: scroll;
 }

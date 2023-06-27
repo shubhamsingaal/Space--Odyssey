@@ -121,7 +121,7 @@ return its sum, i.e a+b+c
 
     const currentTime = new Date().getTime();
 
-    await addDoc(collection(db, 'answers'), {
+    await addDoc(collection(db, 'answers2'), {
       questionId: questions[questionIndex].id,
       answer: answer,
       userId: user.uid,
