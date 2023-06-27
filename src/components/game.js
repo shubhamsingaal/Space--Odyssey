@@ -62,7 +62,8 @@ In this particular scenario, the numerical codes represent the current coordinat
 Now, utilizing your problem-solving skills and understanding of the encoded instructions, how can you decipher the numerical codes and calculate the minimum number of maneuvers needed to transform the starting coordinates of your spacecraft to match the destination coordinates? Your expertise in unraveling the encoded instructions and determining the optimal sequence of maneuvers will be vital in navigating through the asteroid belt and ensuring a safe and successful journey through space.
 
 ## Example 1
-\`\`\`Input: current coordinate = 13 , destination = 42
+\`\`\`
+Input: current coordinate = 13 , destination = 42
 Output: 3
 explanation:
 13→23→32→42 (add 10, add 9, add 10)
@@ -76,7 +77,8 @@ explanation:
 \`Input: current coordinate = 123456789 , destination = 987654321\`
 
 ## Answer format:
-\`\`\`Let the answer for 1st, 2nd and 3rd test cases be a, b, c
+\`\`\`
+Let the answer for 1st, 2nd and 3rd test cases be a, b, c
 return its sum, i.e a+b+c 
 \`\`\`
 `,

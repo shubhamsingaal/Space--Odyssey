@@ -170,10 +170,10 @@ input[type="text"]:focus {
 code{
     background-color: rgba(0,0,0,0.8);
     width: 100%;
-    max-width: 500px;
+    max-width: fit-content;
     border-radius: 5px;
     padding: 10px;
-    display: block;
+    display: flex;
     margin-left: 10px;
     margin-right: 10px;
 }
