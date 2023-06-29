@@ -85,7 +85,7 @@ return its sum, i.e a+b+c
     },
     {
       id: 3,
-      text:`
+      text: `
 After successfully deciphering the previously encoded navigation instructions, you feel a surge of accomplishment and confidence. Your expertise in code-breaking has paid off, and now you are ready to put your piloting skills to the test as you navigate through the treacherous asteroid belt.
 
 As you venture deeper into the asteroid belt, the complexity of the obstacles increases. Massive boulders float ominously, their jagged edges gleaming in the distant sunlight. Swift-moving clusters of smaller asteroids zip by, creating a dangerous labyrinth requiring utmost focus and precision.
@@ -116,8 +116,93 @@ Fortunately, your crewmate hacks into the system of the planet and steals the in
     
     i,e ((password%123)*123)      
 `
+    },
+    {
+      id: 4,
+      text: `
+As you delve deeper into the planet's security system, you realize that cracking the first layer of security was just the beginning. The planet's advanced defense mechanisms have an intricate second layer of security. It becomes clear that to progress further, you must decipher the second layer as well.
+With renewed determination, you start investigating the nature of the second layer.
+After further trial and error, you found out how the password is formed. You also discovered additional information that the password of this layer can only contain two possible values y and N (both uppercase letters)  representing yes and no respectively.
+The relation is as follows, for every code in codes, check if the code is Holy. if it is then the codeValue is Y and if it isn't the codeValue is N. The password of this level is the string containing the codeValue of all the code in  codes.
+Holy:
+A Holy number is defined as a positive integer where the sum of the squares of its digits eventually converges to 1 after repeatedly replacing the number with the sum of the squares of its digits.
+
+
+## Example of a Holy number:
+    code = 19
+    output: "Y"
+    Explanation:
+    1^2 + 9^2 = 82
+    8^2 + 2^2 = 68
+    6^2 + 8^2 = 100
+    1^2 + 0^2 + 0^2 = 1
+
+## Example of an unHoly number:
+    code = 5
+    output = "N"
+    Explanation:
+    5^2 = 25
+    2^2 + 5^2 = 29
+    2^2 + 9^2 = 85
+    8^2 + 5^2 = 89
+    8^2 + 9^2 = 145
+    1^2 + 4^2+ 5^2 = 42
+    4^2 + 2^2 = 20
+    2^2 + 0^2 = 4
+    4^2  = 16
+    1^2 + 6^2 = 37
+    3^2 + 7^2 = 58
+    5^2 + 8^2 = 89
+
+    We can see that '89' has already appeared in
+    the process, by intuition, we can say that, 
+    this sequence will go an infinite number of 
+    times, and this same set of values will be 
+    repeated over and over again. Hence never
+    reaching 0.   
+
+
+
+## Example 1
+    input:
+    codes = [2, 5, 12, 15, 20]
+    output: 
+    password = "NNNNN"
+
+    Explanation:
+    All the code of 'codes' are unHoly
+
+## Example 2
+    input: 
+    codes = [6,7,8,9,19]
+    output: 
+    password = "NYNNY"
+
+    Explanation:
+    6 -> unHoly
+    7 -> Holy
+    8 -> unHoly
+    9 -> unHoly
+    19 -> Holy      
+      
+
+      
+## Test Case 
+    input: 
+    codes = [2709653, 8475768, 891859, 9832694,
+    2503163, 1288825, 9790551, 7544798, 5426506,
+    6954477, 1082318, 5742104, 5299466, 4357213,
+    6157215, 8990368, 4810999, 3059153, 1450309,
+    710631]  
+      
+## Answer format: 
+    return a string 'str',
+    where str[i] is ‘Y’ 
+    is codes[i] is 'Holy' 
+    else str[i] is 'N'      
+`
     }
-    
+
   ];
 
   useEffect(() => {
@@ -155,7 +240,7 @@ Fortunately, your crewmate hacks into the system of the planet and steals the in
 
     const currentTime = new Date().getTime();
 
-    await addDoc(collection(db, 'answers2'), {
+    await addDoc(collection(db, 'answers4'), {
       questionId: questions[questionIndex].id,
       answer: answer,
       userId: user.uid,
