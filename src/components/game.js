@@ -201,7 +201,59 @@ A Holy number is defined as a positive integer where the sum of the squares of i
     is codes[i] is 'Holy' 
     else str[i] is 'N'      
 `
-    }
+    },
+    {
+      id: 5,
+      text: `
+After cracking the second layer of security you finally landed on this unique planet. As you entered this unique planet, you were greeted with both awe and trepidation by the planet's inhabitants. The jubilant welcome quickly turned sour when the reigning king, feeling threatened by your achievement, challenged you to a duel.
+Undeterred by the king's anger, you accepted the challenge with confidence. The duel took place in a grand arena, filled to the brim with curious spectators eager to witness this extraordinary clash of minds. The king, a formidable opponent with years of mental training, engaged you in a battle of wits and strategy.
+The jury began explaining the rules, the rules are as follows:
+
+## Example 1
+    sequence:   A    B    C    D ......    z    AA    AB    AC   .......    ZZ
+          |    |    |    |           |     |    |     |                |
+    placeValue :1    2    3    4 ......    26   27    28    29   .......    720
+
+    The jury will give you any element of this sequence (in the form of a string), and 
+    whoever answers first wins the round, the answer should be its corresponding placeValue.
+
+
+## Example 1
+    input = "BA"
+    output = 53   
+   
+## Example 2
+    input = "JHOOPS"
+    output = 122743783  
+    
+## Example 3
+    input = "NITDGP"
+    output = 170806470     
+
+## Test Case 1:
+    input = "ISTE"
+
+## Test Case 2:
+    input = "CHAPTER"
+
+## Test Case 3:
+    input = "NIT"  
+
+## Test Case 4:
+    input = "DGP"    
+
+## Answer Format:
+    Let the value of test case 1,2,3,and 4 be a,b,c,d respectively 
+    return:
+    (b-21700)%(a+c+d), where % is modulo operator
+
+ Can you be the king?   
+ 
+
+
+
+`
+}
 
   ];
 
@@ -240,7 +292,7 @@ A Holy number is defined as a positive integer where the sum of the squares of i
 
     const currentTime = new Date().getTime();
 
-    await addDoc(collection(db, 'answers4'), {
+    await addDoc(collection(db, 'answers5'), {
       questionId: questions[questionIndex].id,
       answer: answer,
       userId: user.uid,
